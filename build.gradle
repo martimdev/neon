@@ -36,5 +36,6 @@ compileTestKotlin {
 }
 
 jfx {
-    mainClass = 'full.qualified.nameOf.TheMainClass'
+    mainClass = 'org.neon.Launch'
+    vendor = 'a'
 }

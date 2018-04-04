@@ -8,6 +8,10 @@ import static org.neon.Main.*;
 
 public class Launch extends Application {
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) {
         stage = primaryStage;
