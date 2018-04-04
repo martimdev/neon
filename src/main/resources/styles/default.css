@@ -18,3 +18,17 @@
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 0;
 }
+
+.tree-view {
+    -fx-background-color: #4B4E50;
+}
+
+.tree-cell {
+    -fx-padding: 3 0 3 0;
+    -fx-font-size: 12.4;
+    -fx-indent: 12;
+}
+
+.tree-cell .tree-disclosure-node .arrow {
+    -fx-padding: 4.5 3.5 4.5 3.5;
+}

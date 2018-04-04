@@ -46,8 +46,8 @@ object NeonExplorer : TreeView<NeonFile>() {
     }
 
     init {
-        this.prefHeight = Main.screen.height - 23.5
-        this.layoutY += 23.5
+        this.prefHeight = Main.screen.height - 25
+        this.layoutY += 25
         Resizable(this).makeRegionResizable()
         val icon = ImageView(folderIcon)
         icon.fitHeight = 12.0

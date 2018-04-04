@@ -25,3 +25,20 @@
 .separator .line {
     -fx-border-color: #515151;
 }
+
+.tree-view {
+    -fx-background-color: #3C3F41;
+}
+
+.tree-cell {
+    -fx-background-color: #3C3F41;
+    -fx-text-fill: white;
+}
+
+.tree-cell:selected {
+    -fx-background-color: #0096C9;
+}
+
+.tree-cell .tree-disclosure-node .arrow {
+    -fx-background-color: white;
+}
