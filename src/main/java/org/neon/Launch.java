@@ -2,7 +2,6 @@ package org.neon;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import static org.neon.Main.*;
@@ -13,9 +12,9 @@ public class Launch extends Application {
     public void start(Stage primaryStage) {
         stage = primaryStage;
         stage.setTitle("Neon");
-        root = new AnchorPane();
         loadDeafultComponents();
-        scene = new Scene(root);
+        loadDefaultStyles();
+        scene = new Scene(root, screen.getWidth(), screen.getHeight());
         stage.setScene(scene);
         stage.show();
     }
