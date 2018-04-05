@@ -4,8 +4,9 @@ import javafx.scene.control.TreeItem
 import javafx.scene.control.TreeView
 import javafx.scene.image.ImageView
 import org.neon.Main
-import org.neon.util.Icons
 import org.neon.api.controls.rezisables.Resizable
+import org.neon.api.statusbar.NeonStatusBar
+import org.neon.util.Icons
 import org.neon.util.files.NeonFile
 import java.io.File
 
@@ -35,7 +36,7 @@ object NeonExplorer : TreeView<NeonFile>() {
     }
 
     init {
-        this.prefHeight = Main.screen.height - 50
+        this.prefHeight = Main.screen.height - (51 + NeonStatusBar.prefHeight)
         this.layoutY += 50
         Resizable(this).makeRegionResizable()
         this.root = TreeItem(rootFolder, Icons.Folder(14.0, 14.0))

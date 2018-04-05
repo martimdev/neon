@@ -9,6 +9,7 @@ import org.neon.api.console.NeonConsole;
 import org.neon.api.explorer.ExplorerToolBar;
 import org.neon.api.explorer.NeonExplorer;
 import org.neon.api.menubar.NeonMenuBar;
+import org.neon.api.statusbar.NeonStatusBar;
 
 import java.io.PrintStream;
 
@@ -24,6 +25,7 @@ public class Main {
         root.getChildren().add(NeonExplorer.INSTANCE);
         root.getChildren().add(ExplorerToolBar.INSTANCE);
         root.getChildren().add(NeonConsole.ConsoleArea.INSTANCE);
+        root.getChildren().add(NeonStatusBar.INSTANCE);
     }
 
     static void loadDefaultStyles() {
