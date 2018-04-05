@@ -5,7 +5,7 @@ import javafx.scene.control.TreeView
 import javafx.scene.image.ImageView
 import org.neon.Main
 import org.neon.util.Icons
-import org.neon.util.controls.Resizable
+import org.neon.api.controls.rezisables.Resizable
 import org.neon.util.files.NeonFile
 import java.io.File
 

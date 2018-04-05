@@ -1,4 +1,4 @@
-package org.neon.util.controls;
+package org.neon.api.controls.rezisables;
 
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
