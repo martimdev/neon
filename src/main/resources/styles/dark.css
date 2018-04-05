@@ -42,3 +42,7 @@
 .tree-cell .tree-disclosure-node .arrow {
     -fx-background-color: white;
 }
+
+.tool-bar {
+    -fx-background-color: #3C3F41;
+}

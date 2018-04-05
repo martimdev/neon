@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.neon.api.explorer.ExplorerToolBar;
 import org.neon.api.explorer.NeonExplorer;
 import org.neon.api.menubar.NeonMenuBar;
 
@@ -18,6 +19,7 @@ public class Main {
     static void loadDeafultComponents() {
         root.getChildren().add(NeonMenuBar.INSTANCE);
         root.getChildren().add(NeonExplorer.INSTANCE);
+        root.getChildren().add(ExplorerToolBar.INSTANCE);
     }
 
     static void loadDefaultStyles() {
