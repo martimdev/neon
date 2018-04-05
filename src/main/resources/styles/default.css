@@ -36,3 +36,9 @@
 .button {
     -fx-background-color: transparent;
 }
+
+.text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-border-width: 0;
+}

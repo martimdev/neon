@@ -5,26 +5,34 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.neon.api.console.NeonConsole;
 import org.neon.api.explorer.ExplorerToolBar;
 import org.neon.api.explorer.NeonExplorer;
 import org.neon.api.menubar.NeonMenuBar;
 
+import java.io.PrintStream;
+
 public class Main {
 
     public static Stage stage;
-    public static AnchorPane root = new AnchorPane();
     public static Rectangle2D screen = Screen.getPrimary().getVisualBounds();
     public static Scene scene;
+    static AnchorPane root = new AnchorPane();
 
     static void loadDeafultComponents() {
         root.getChildren().add(NeonMenuBar.INSTANCE);
         root.getChildren().add(NeonExplorer.INSTANCE);
         root.getChildren().add(ExplorerToolBar.INSTANCE);
+        root.getChildren().add(NeonConsole.ConsoleArea.INSTANCE);
     }
 
     static void loadDefaultStyles() {
         root.getStylesheets().add("styles/default.css");
         root.getStylesheets().add("styles/dark.css");
+    }
+
+    static void loadConfigs() {
+        System.setOut(new PrintStream(NeonConsole.INSTANCE));
     }
 
 }

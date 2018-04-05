@@ -17,11 +17,11 @@ public class Launch extends Application {
         stage = primaryStage;
         stage.setTitle("Neon");
         scene = new Scene(root, screen.getWidth(), screen.getHeight());
+        loadConfigs();
         loadDeafultComponents();
         loadDefaultStyles();
         stage.setScene(scene);
         stage.show();
-
     }
 
 }

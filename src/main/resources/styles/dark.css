@@ -46,3 +46,13 @@
 .tool-bar {
     -fx-background-color: #3C3F41;
 }
+
+.text-area {
+    -fx-background-color: #1B1B1B;
+    -fx-text-fill: white;
+}
+
+.text-area .content {
+    -fx-background-color: #2B2B2B;
+    -fx-fill: white;
+}
