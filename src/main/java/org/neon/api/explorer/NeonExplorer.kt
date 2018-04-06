@@ -53,19 +53,12 @@ object NeonExplorer : TreeView<NeonFile>() {
         }
 
         this.setOnMouseDragged { event ->
-            if (event.x > this.width - 5)
+            if (event.x > this.width - 10)
                 this.cursor = Cursor.E_RESIZE
             else
                 this.cursor = Cursor.DEFAULT
             when {
-                event.x > this.prefWidth -> {
-                    this.prefWidth = event.x
-                    NeonEditor.prefWidth = Main.screen.width + 1 - event.x
-                    NeonEditor.layoutX = event.x + 1
-                    EditorToolBar.prefWidth = Main.screen.width + 1 - event.x
-                    EditorToolBar.layoutX = event.x + 1
-                }
-                event.x - 5 < this.prefWidth && event.x + 15 > this.prefWidth -> {
+                event.x > this.prefWidth || event.x - 5 < this.prefWidth && event.x + 15 > this.prefWidth -> {
                     this.prefWidth = event.x
                     NeonEditor.prefWidth = Main.screen.width + 1 - event.x
                     NeonEditor.layoutX = event.x + 1
