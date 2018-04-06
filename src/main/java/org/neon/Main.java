@@ -6,6 +6,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.neon.api.console.NeonConsole;
+import org.neon.api.editor.EditorToolBar;
 import org.neon.api.editor.NeonEditor;
 import org.neon.api.explorer.ExplorerToolBar;
 import org.neon.api.explorer.NeonExplorer;
@@ -26,6 +27,7 @@ public class Main {
         root.getChildren().add(NeonExplorer.INSTANCE);
         root.getChildren().add(ExplorerToolBar.INSTANCE);
         root.getChildren().add(NeonEditor.INSTANCE);
+        root.getChildren().add(EditorToolBar.INSTANCE);
         root.getChildren().add(NeonConsole.ConsoleArea.INSTANCE);
         root.getChildren().add(NeonStatusBar.INSTANCE);
     }

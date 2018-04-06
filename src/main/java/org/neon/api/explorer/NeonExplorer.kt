@@ -5,6 +5,7 @@ import javafx.scene.control.TreeItem
 import javafx.scene.control.TreeView
 import javafx.scene.image.ImageView
 import org.neon.Main
+import org.neon.api.editor.EditorToolBar
 import org.neon.api.editor.NeonEditor
 import org.neon.api.statusbar.NeonStatusBar
 import org.neon.util.Icons
@@ -59,15 +60,17 @@ object NeonExplorer : TreeView<NeonFile>() {
             when {
                 event.x > this.prefWidth -> {
                     this.prefWidth = event.x
-                    NeonEditor.prefWidth = Main.screen.width - event.x
-                    NeonEditor.layoutX = event.x
+                    NeonEditor.prefWidth = Main.screen.width + 1 - event.x
+                    NeonEditor.layoutX = event.x + 1
+                    EditorToolBar.prefWidth = Main.screen.width + 1 - event.x
+                    EditorToolBar.layoutX = event.x + 1
                 }
                 event.x - 5 < this.prefWidth && event.x + 15 > this.prefWidth -> {
-                    println(event.x)
-                    println(this.prefWidth)
                     this.prefWidth = event.x
-                    NeonEditor.prefWidth = Main.screen.width - event.x
-                    NeonEditor.layoutX = event.x
+                    NeonEditor.prefWidth = Main.screen.width + 1 - event.x
+                    NeonEditor.layoutX = event.x + 1
+                    EditorToolBar.prefWidth = Main.screen.width + 1 - event.x
+                    EditorToolBar.layoutX = event.x + 1
                 }
                 else -> this.cursor = Cursor.DEFAULT
             }

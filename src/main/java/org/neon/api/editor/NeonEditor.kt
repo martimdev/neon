@@ -11,7 +11,7 @@ object NeonEditor : InlineCssTextArea() {
         this.prefHeight = Main.screen.height - (51 + NeonStatusBar.prefHeight)
         this.layoutY += 50
         this.prefWidth = Main.screen.width - NeonExplorer.prefWidth
-        this.layoutX += NeonExplorer.prefWidth
+        this.layoutX += NeonExplorer.prefWidth + 1
     }
 
 }
