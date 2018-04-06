@@ -41,3 +41,8 @@
     -fx-font-family: Consolas;
     -fx-font-size: 15;
 }
+
+.styled-text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+}

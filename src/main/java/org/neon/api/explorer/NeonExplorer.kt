@@ -1,10 +1,11 @@
 package org.neon.api.explorer
 
+import javafx.scene.Cursor
 import javafx.scene.control.TreeItem
 import javafx.scene.control.TreeView
 import javafx.scene.image.ImageView
 import org.neon.Main
-import org.neon.api.controls.rezisables.Resizable
+import org.neon.api.editor.NeonEditor
 import org.neon.api.statusbar.NeonStatusBar
 import org.neon.util.Icons
 import org.neon.util.files.NeonFile
@@ -38,10 +39,38 @@ object NeonExplorer : TreeView<NeonFile>() {
     init {
         this.prefHeight = Main.screen.height - (51 + NeonStatusBar.prefHeight)
         this.layoutY += 50
-        Resizable(this).makeRegionResizable()
+        this.prefWidth = 250.0
         this.root = TreeItem(rootFolder, Icons.Folder(14.0, 14.0))
         this.listFiles(this.root, this.rootFolder)
         this.root.isExpanded = true
-    }
 
+        this.setOnMouseMoved { event ->
+            if (event.x > this.width - 5)
+                this.cursor = Cursor.E_RESIZE
+            else
+                this.cursor = Cursor.DEFAULT
+        }
+
+        this.setOnMouseDragged { event ->
+            if (event.x > this.width - 5)
+                this.cursor = Cursor.E_RESIZE
+            else
+                this.cursor = Cursor.DEFAULT
+            when {
+                event.x > this.prefWidth -> {
+                    this.prefWidth = event.x
+                    NeonEditor.prefWidth = Main.screen.width - event.x
+                    NeonEditor.layoutX = event.x
+                }
+                event.x - 5 < this.prefWidth && event.x + 15 > this.prefWidth -> {
+                    println(event.x)
+                    println(this.prefWidth)
+                    this.prefWidth = event.x
+                    NeonEditor.prefWidth = Main.screen.width - event.x
+                    NeonEditor.layoutX = event.x
+                }
+                else -> this.cursor = Cursor.DEFAULT
+            }
+        }
+    }
 }

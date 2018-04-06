@@ -24,6 +24,7 @@ repositories {
 apply plugin: 'javafx-gradle-plugin'
 
 dependencies {
+    compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.8.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
@@ -37,5 +38,5 @@ compileTestKotlin {
 
 jfx {
     mainClass = 'org.neon.Launch'
-    vendor = 'a'
+    vendor = 'neonc'
 }

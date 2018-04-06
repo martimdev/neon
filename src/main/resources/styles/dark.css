@@ -56,3 +56,11 @@
     -fx-background-color: #2B2B2B;
     -fx-fill: white;
 }
+
+.styled-text-area {
+    -fx-background-color: #2B2B2B;
+}
+
+.styled-text-area .text {
+    -fx-fill: white;
+}
