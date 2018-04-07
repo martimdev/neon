@@ -1,6 +1,7 @@
-package org.neon.api.explorer
+package org.neon.api.controls.explorer
 
 import javafx.scene.Cursor
+import javafx.scene.control.Alert
 import javafx.scene.control.TreeCell
 import javafx.scene.control.TreeItem
 import javafx.scene.control.TreeView
@@ -8,9 +9,9 @@ import javafx.scene.image.ImageView
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
 import javafx.scene.text.Text
-import org.neon.api.editor.NeonEditor
-import org.neon.api.editor.OpenFilesBar
-import org.neon.api.statusbar.NeonStatusBar
+import org.neon.api.controls.editor.NeonEditor
+import org.neon.api.controls.editor.OpenFilesBar
+import org.neon.api.controls.statusbar.NeonStatusBar
 import org.neon.util.Icons
 import org.neon.util.actions.openFile
 import org.neon.util.config
@@ -46,11 +47,11 @@ object NeonExplorer : TreeView<NeonFile>() {
                 item?.graphic = Icons.Folder(14.0, 14.0)
                 listFiles(item!!, NeonFile(file.path))
             } else {
-                if (icons[file.extension] == null) {
+                if (icons[file.extension] == null)
                     item?.graphic = Icons.Undefined(14.0, 14.0)
-                } else {
+                else
                     item?.graphic = Icons.copy(icons[file.extension])
-                }
+
             }
             root.children.add(item)
         }
@@ -89,4 +90,21 @@ object NeonExplorer : TreeView<NeonFile>() {
             }
         }
     }
+
+    fun createNewFile(fileName: String) {
+        val selectedItem = this.selectionModel.selectedItem
+        val file = File(selectedItem.value.absolutePath + "/" + fileName)
+        if (!file.exists()) {
+            val item: TreeItem<NeonFile>? = TreeItem(NeonFile(file.path))
+            file.createNewFile()
+            if (icons[file.extension] == null)
+                item?.graphic = Icons.Undefined(14.0, 14.0)
+            else
+                item?.graphic = Icons.copy(icons[file.extension])
+            selectedItem.children.add(item)
+        } else {
+            Alert(Alert.AlertType.ERROR, "File already exists").showAndWait()
+        }
+    }
+
 }

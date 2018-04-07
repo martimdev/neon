@@ -1,9 +1,9 @@
-package org.neon.api.statusbar
+package org.neon.api.controls.statusbar
 
 import javafx.scene.control.ToolBar
-import org.neon.api.console.NeonConsole
-import org.neon.api.editor.NeonEditor
-import org.neon.api.explorer.NeonExplorer
+import org.neon.api.controls.console.NeonConsole
+import org.neon.api.controls.editor.NeonEditor
+import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.util.screen
 import org.neon.util.stage
 

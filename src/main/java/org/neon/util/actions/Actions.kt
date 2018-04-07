@@ -1,10 +1,10 @@
 package org.neon.util.actions
 
-import org.neon.api.editor.FileButton
-import org.neon.api.editor.NeonEditor
-import org.neon.api.editor.OpenFilesBar
-import org.neon.api.explorer.ExplorerToolBar
-import org.neon.api.explorer.NeonExplorer
+import org.neon.api.controls.editor.FileButton
+import org.neon.api.controls.editor.NeonEditor
+import org.neon.api.controls.editor.OpenFilesBar
+import org.neon.api.controls.explorer.ExplorerToolBar
+import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.util.screen
 import java.io.File
 

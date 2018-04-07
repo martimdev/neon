@@ -1,11 +1,11 @@
-package org.neon.api.menubar.menus
+package org.neon.api.controls.menubar.menus
 
 import javafx.scene.control.Menu
 import javafx.scene.control.MenuItem
 import javafx.scene.control.SeparatorMenuItem
-import org.neon.api.console.NeonConsole
-import org.neon.api.editor.NeonEditor
-import org.neon.api.explorer.NeonExplorer
+import org.neon.api.controls.console.NeonConsole
+import org.neon.api.controls.editor.NeonEditor
+import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.util.Icons
 import org.neon.util.actions.hideExplorer
 import org.neon.util.actions.showExplorer
@@ -17,7 +17,6 @@ object MenuView : Menu("View") {
     private val menuItemEditor = MenuItem("Editor", Icons.CheckMark(12.0, 12.0))
 
     init {
-
         this.items.addAll(
                 SeparatorMenuItem(),
                 menuItemExplorer,
@@ -53,7 +52,6 @@ object MenuView : Menu("View") {
             }
             NeonEditor.isVisible = !NeonEditor.isVisible
         }
-
     }
 
 }

@@ -1,7 +1,7 @@
-package org.neon.api.editor
+package org.neon.api.controls.editor
 
 import javafx.scene.control.ToolBar
-import org.neon.api.explorer.NeonExplorer
+import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.util.Icons
 import org.neon.util.screen
 import java.io.File

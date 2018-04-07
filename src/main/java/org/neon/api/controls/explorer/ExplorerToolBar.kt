@@ -1,4 +1,4 @@
-package org.neon.api.explorer
+package org.neon.api.controls.explorer
 
 import javafx.scene.control.Button
 import javafx.scene.control.ToolBar

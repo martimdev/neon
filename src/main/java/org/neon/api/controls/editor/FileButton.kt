@@ -1,4 +1,4 @@
-package org.neon.api.editor
+package org.neon.api.controls.editor
 
 import javafx.scene.control.Button
 import org.neon.util.actions.closeFile

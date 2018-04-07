@@ -1,9 +1,9 @@
-package org.neon.api.menubar
+package org.neon.api.controls.menubar
 
 import javafx.scene.control.Menu
 import javafx.scene.control.MenuBar
-import org.neon.api.menubar.menus.MenuFile
-import org.neon.api.menubar.menus.MenuView
+import org.neon.api.controls.menubar.menus.MenuFile
+import org.neon.api.controls.menubar.menus.MenuView
 import org.neon.util.stage
 
 object NeonMenuBar : MenuBar() {
