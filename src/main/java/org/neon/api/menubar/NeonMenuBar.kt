@@ -2,9 +2,9 @@ package org.neon.api.menubar
 
 import javafx.scene.control.Menu
 import javafx.scene.control.MenuBar
-import org.neon.Main
 import org.neon.api.menubar.menus.MenuFile
 import org.neon.api.menubar.menus.MenuView
+import org.neon.util.stage
 
 object NeonMenuBar : MenuBar() {
 
@@ -18,7 +18,7 @@ object NeonMenuBar : MenuBar() {
     object MenuHelp : Menu("Help")
 
     init {
-        this.prefWidthProperty().bind(Main.stage.widthProperty())
+        this.prefWidthProperty().bind(stage.widthProperty())
         this.menus.addAll(
                 MenuFile,
                 MenuEdit,

@@ -8,13 +8,14 @@ import javafx.scene.image.ImageView
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
 import javafx.scene.text.Text
-import org.neon.Main
 import org.neon.api.editor.NeonEditor
 import org.neon.api.editor.OpenFilesBar
 import org.neon.api.statusbar.NeonStatusBar
 import org.neon.util.Icons
 import org.neon.util.actions.openFile
+import org.neon.util.config
 import org.neon.util.files.NeonFile
+import org.neon.util.screen
 import java.io.File
 
 object NeonExplorer : TreeView<NeonFile>() {
@@ -56,12 +57,10 @@ object NeonExplorer : TreeView<NeonFile>() {
     }
 
     init {
-        //
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle)
-        //
-        this.prefHeight = Main.screen.height - (51 + NeonStatusBar.prefHeight)
+        this.prefHeight = screen.height - (51 + NeonStatusBar.prefHeight)
         this.layoutY += 50
-        this.prefWidth = 250.0
+        this.prefWidth = config.explorerWidth
         this.root = TreeItem(rootFolder, Icons.Folder(14.0, 14.0))
         this.listFiles(this.root, this.rootFolder)
         this.root.isExpanded = true
@@ -81,9 +80,9 @@ object NeonExplorer : TreeView<NeonFile>() {
             when {
                 event.x > this.prefWidth || event.x - 5 < this.prefWidth && event.x + 15 > this.prefWidth -> {
                     this.prefWidth = event.x
-                    NeonEditor.prefWidth = Main.screen.width + 1 - event.x
+                    NeonEditor.prefWidth = screen.width + 1 - event.x
                     NeonEditor.layoutX = event.x + 1
-                    OpenFilesBar.prefWidth = Main.screen.width + 1 - event.x
+                    OpenFilesBar.prefWidth = screen.width + 1 - event.x
                     OpenFilesBar.layoutX = event.x + 1
                 }
                 else -> this.cursor = Cursor.DEFAULT

@@ -1,9 +1,9 @@
 package org.neon.api.editor
 
 import javafx.scene.control.ToolBar
-import org.neon.Main
 import org.neon.api.explorer.NeonExplorer
 import org.neon.util.Icons
+import org.neon.util.screen
 import java.io.File
 
 object OpenFilesBar : ToolBar() {
@@ -12,7 +12,7 @@ object OpenFilesBar : ToolBar() {
     var activeFileButton: FileButton? = null
 
     init {
-        this.prefWidth = Main.screen.width - NeonExplorer.prefWidth
+        this.prefWidth = screen.width - NeonExplorer.prefWidth
         this.layoutX += NeonExplorer.prefWidth + 1
         this.prefHeight = 25.0
         this.layoutY += 24

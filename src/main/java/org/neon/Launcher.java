@@ -4,7 +4,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import static org.neon.Main.*;
+import static org.neon.util.MainActionsKt.*;
+import static org.neon.util.MainValuesKt.*;
 
 public class Launcher extends Application {
 
@@ -16,11 +17,10 @@ public class Launcher extends Application {
     public void start(Stage primaryStage) {
         stage = primaryStage;
         stage.setTitle("Neon");
-        scene = new Scene(root, screen.getWidth(), screen.getHeight());
-        loadConfigs();
+        stage.setScene(new Scene(getRoot(), getScreen().getWidth(), getScreen().getHeight()));
         loadDeafultComponents();
-        loadDefaultStyles();
-        stage.setScene(scene);
+        enableConfigs();
+        loadStyles();
         stage.show();
     }
 
