@@ -33,8 +33,9 @@
     -fx-padding: 4.5 3.5 4.5 3.5;
 }
 
-.button {
-    -fx-background-color: transparent;
+.tool-bar {
+    -fx-padding: 0, 0, 0, 0;
+    -fx-spacing: 0;
 }
 
 .text-area {
@@ -45,4 +46,9 @@
 .styled-text-area {
     -fx-font-family: Consolas;
     -fx-font-size: 14;
+}
+
+.button {
+    -fx-border-width: 1;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
 }

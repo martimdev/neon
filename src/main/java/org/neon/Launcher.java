@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 import static org.neon.Main.*;
 
-public class Launch extends Application {
+public class Launcher extends Application {
 
     public static void main(String[] args) {
         launch(args);

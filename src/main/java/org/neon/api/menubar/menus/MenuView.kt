@@ -4,14 +4,17 @@ import javafx.scene.control.Menu
 import javafx.scene.control.MenuItem
 import javafx.scene.control.SeparatorMenuItem
 import org.neon.api.console.NeonConsole
-import org.neon.api.explorer.ExplorerToolBar
+import org.neon.api.editor.NeonEditor
 import org.neon.api.explorer.NeonExplorer
 import org.neon.util.Icons
+import org.neon.util.actions.hideExplorer
+import org.neon.util.actions.showExplorer
 
 object MenuView : Menu("View") {
 
     private val menuItemExplorer = MenuItem("Explorer", Icons.CheckMark(12.0, 12.0))
     private val menuItemConsole = MenuItem("Console")
+    private val menuItemEditor = MenuItem("Editor", Icons.CheckMark(12.0, 12.0))
 
     init {
 
@@ -19,17 +22,18 @@ object MenuView : Menu("View") {
                 SeparatorMenuItem(),
                 menuItemExplorer,
                 menuItemConsole,
+                menuItemEditor,
                 SeparatorMenuItem()
         )
 
         menuItemExplorer.setOnAction {
             if (NeonExplorer.isVisible) {
                 menuItemExplorer.graphic = null
+                hideExplorer()
             } else {
                 menuItemExplorer.graphic = Icons.CheckMark(12.0, 12.0)
+                showExplorer()
             }
-            NeonExplorer.isVisible = !NeonExplorer.isVisible
-            ExplorerToolBar.isVisible = NeonExplorer.isVisible
         }
 
         menuItemConsole.setOnAction {
@@ -39,6 +43,15 @@ object MenuView : Menu("View") {
                 menuItemConsole.graphic = Icons.CheckMark(12.0, 12.0)
             }
             NeonConsole.ConsoleArea.isVisible = !NeonConsole.ConsoleArea.isVisible
+        }
+
+        menuItemEditor.setOnAction {
+            if (NeonEditor.isVisible) {
+                menuItemEditor.graphic = null
+            } else {
+                menuItemEditor.graphic = Icons.CheckMark(12.0, 12.0)
+            }
+            NeonEditor.isVisible = !NeonEditor.isVisible
         }
 
     }

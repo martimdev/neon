@@ -49,6 +49,11 @@
 
 .tool-bar {
     -fx-background-color: #3C3F41;
+    -fx-fill: blue;
+}
+
+.tool-bar {
+    -fx-background-color: #3C3F41;
 }
 
 .text-area {
@@ -67,4 +72,18 @@
 
 .styled-text-area .text {
     -fx-fill: white;
+}
+
+.styled-text-area .caret {
+    -fx-stroke: white;
+}
+
+.button {
+    -fx-background-color: #3C3F41;
+    -fx-border-color: #8E8E91;
+    -fx-text-fill: white;
+}
+
+.active-file-button {
+    -fx-background-color: #515658;
 }

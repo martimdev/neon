@@ -1,21 +1,39 @@
 package org.neon.api.explorer
 
 import javafx.scene.Cursor
+import javafx.scene.control.TreeCell
 import javafx.scene.control.TreeItem
 import javafx.scene.control.TreeView
 import javafx.scene.image.ImageView
+import javafx.scene.input.MouseButton
+import javafx.scene.input.MouseEvent
+import javafx.scene.text.Text
 import org.neon.Main
-import org.neon.api.editor.EditorToolBar
 import org.neon.api.editor.NeonEditor
+import org.neon.api.editor.OpenFilesBar
 import org.neon.api.statusbar.NeonStatusBar
 import org.neon.util.Icons
+import org.neon.util.actions.openFile
 import org.neon.util.files.NeonFile
 import java.io.File
 
 object NeonExplorer : TreeView<NeonFile>() {
 
+    private val mouseEventHandle = { event: MouseEvent ->
+        val node = event.pickResult.intersectedNode
+        if (node is Text || node is TreeCell<*> && node.text != null) {
+            val file = this.selectionModel.selectedItem.value
+            if (event.clickCount == 2 && event.button == MouseButton.PRIMARY) {
+                if (file.isFile) {
+                    openFile(file)
+                    NeonEditor.replaceText(file.readText())
+                }
+            }
+        }
+    }
+
     private var rootFolder = NeonFile("C:\\Users\\Vitor Marques\\dev\\JavaScript\\flappy-bird")
-    private val icons: HashMap<String, ImageView> = hashMapOf(
+    val icons: HashMap<String, ImageView> = hashMapOf(
             "py" to Icons.Python(14.0, 14.0),
             "js" to Icons.JavaScript(14.0, 14.0)
     )
@@ -38,6 +56,9 @@ object NeonExplorer : TreeView<NeonFile>() {
     }
 
     init {
+        //
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle)
+        //
         this.prefHeight = Main.screen.height - (51 + NeonStatusBar.prefHeight)
         this.layoutY += 50
         this.prefWidth = 250.0
@@ -62,8 +83,8 @@ object NeonExplorer : TreeView<NeonFile>() {
                     this.prefWidth = event.x
                     NeonEditor.prefWidth = Main.screen.width + 1 - event.x
                     NeonEditor.layoutX = event.x + 1
-                    EditorToolBar.prefWidth = Main.screen.width + 1 - event.x
-                    EditorToolBar.layoutX = event.x + 1
+                    OpenFilesBar.prefWidth = Main.screen.width + 1 - event.x
+                    OpenFilesBar.layoutX = event.x + 1
                 }
                 else -> this.cursor = Cursor.DEFAULT
             }
