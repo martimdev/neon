@@ -6,7 +6,7 @@ import org.neon.api.config.ConfigData
 import org.neon.api.controls.console.NeonConsole
 import org.neon.api.controls.editor.NeonEditor
 import org.neon.api.controls.editor.OpenFilesBar
-import org.neon.api.controls.explorer.ExplorerToolBar
+import org.neon.api.controls.explorer.ExplorerBar
 import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.api.controls.menubar.NeonMenuBar
 import org.neon.api.controls.statusbar.NeonStatusBar
@@ -17,7 +17,7 @@ import java.io.PrintStream
 fun loadDeafultComponents() {
     root.children.add(NeonMenuBar)
     root.children.add(NeonExplorer)
-    root.children.add(ExplorerToolBar)
+    root.children.add(ExplorerBar)
     root.children.add(NeonEditor)
     root.children.add(OpenFilesBar)
     root.children.add(NeonConsole.ConsoleArea)

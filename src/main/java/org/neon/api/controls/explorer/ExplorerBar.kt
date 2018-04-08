@@ -4,7 +4,7 @@ import javafx.scene.control.Button
 import javafx.scene.control.ToolBar
 import org.neon.util.Icons
 
-object ExplorerToolBar : ToolBar() {
+object ExplorerBar : ToolBar() {
 
     object ExplorerSettingsButton : Button(null, Icons.Gear(15.0, 15.0)) {
         init {

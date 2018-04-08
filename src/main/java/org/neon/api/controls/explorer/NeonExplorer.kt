@@ -1,22 +1,19 @@
 package org.neon.api.controls.explorer
 
 import javafx.scene.Cursor
-import javafx.scene.control.Alert
-import javafx.scene.control.TreeCell
-import javafx.scene.control.TreeItem
-import javafx.scene.control.TreeView
+import javafx.scene.control.*
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
 import javafx.scene.text.Text
+import org.neon.api.contexts.FileContextMenu
+import org.neon.api.contexts.FolderContextMenu
 import org.neon.api.controls.editor.NeonEditor
 import org.neon.api.controls.editor.OpenFilesBar
 import org.neon.api.controls.statusbar.NeonStatusBar
-import org.neon.util.Icons
+import org.neon.util.*
 import org.neon.util.actions.openFile
-import org.neon.util.config
 import org.neon.util.files.NeonFile
-import org.neon.util.screen
 import java.io.File
 
 object NeonExplorer : TreeView<NeonFile>() {
@@ -29,6 +26,12 @@ object NeonExplorer : TreeView<NeonFile>() {
                 if (file.isFile) {
                     openFile(file)
                     NeonEditor.replaceText(file.readText())
+                }
+            } else if (event.button == MouseButton.SECONDARY) {
+                if (file.isDirectory) {
+                    FolderContextMenu.show(stage, event.screenX, event.screenY)
+                } else {
+                    FileContextMenu.show(stage, event.screenX, event.screenY)
                 }
             }
         }
@@ -104,6 +107,18 @@ object NeonExplorer : TreeView<NeonFile>() {
             selectedItem.children.add(item)
         } else {
             Alert(Alert.AlertType.ERROR, "File already exists").showAndWait()
+        }
+    }
+
+    fun deleteFile(file: File) {
+        val alert = Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to move this file to trash?")
+        val trashFolder = File(neonFolder.absolutePath + "/trash")
+        if (!trashFolder.exists()) {
+            trashFolder.mkdirs()
+        }
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            file.renameTo(File("$neonFolder/trash/$file"))
+            this.selectionModel.selectedItem.parent.children.remove(this.selectionModel.selectedItem)
         }
     }
 

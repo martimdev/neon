@@ -3,14 +3,14 @@ package org.neon.util.actions
 import org.neon.api.controls.editor.FileButton
 import org.neon.api.controls.editor.NeonEditor
 import org.neon.api.controls.editor.OpenFilesBar
-import org.neon.api.controls.explorer.ExplorerToolBar
+import org.neon.api.controls.explorer.ExplorerBar
 import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.util.screen
 import java.io.File
 
 fun hideExplorer() {
     NeonExplorer.isVisible = false
-    ExplorerToolBar.isVisible = false
+    ExplorerBar.isVisible = false
     NeonEditor.prefWidth = screen.width
     NeonEditor.layoutX = 0.0
     OpenFilesBar.prefWidth = screen.width
@@ -19,7 +19,7 @@ fun hideExplorer() {
 
 fun showExplorer() {
     NeonExplorer.isVisible = true
-    ExplorerToolBar.isVisible = true
+    ExplorerBar.isVisible = true
     NeonEditor.prefWidth = screen.width + 1 - NeonExplorer.prefWidth
     NeonEditor.layoutX = NeonExplorer.prefWidth + 1
     OpenFilesBar.prefWidth = screen.width + 1 - NeonExplorer.prefWidth
