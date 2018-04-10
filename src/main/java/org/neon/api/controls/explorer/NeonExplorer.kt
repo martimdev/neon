@@ -12,7 +12,6 @@ import org.neon.api.controls.editor.NeonEditor
 import org.neon.api.controls.editor.OpenFilesBar
 import org.neon.api.controls.statusbar.NeonStatusBar
 import org.neon.util.*
-import org.neon.util.actions.openFile
 import org.neon.util.files.NeonFile
 import java.io.File
 
@@ -24,8 +23,7 @@ object NeonExplorer : TreeView<NeonFile>() {
             val file = this.selectionModel.selectedItem.value
             if (event.clickCount == 2 && event.button == MouseButton.PRIMARY) {
                 if (file.isFile) {
-                    openFile(file)
-                    NeonEditor.replaceText(file.readText())
+                    OpenFilesBar.openFile(file)
                 }
             } else if (event.button == MouseButton.SECONDARY) {
                 if (file.isDirectory) {

@@ -12,5 +12,12 @@ object NeonEditor : InlineCssTextArea() {
         this.layoutY += 50
         this.prefWidth = screen.width - NeonExplorer.prefWidth
         this.layoutX += NeonExplorer.prefWidth + 1
+
+        this.setOnKeyTyped {
+            if (OpenFilesBar.activeFileBox != null) {
+                OpenFilesBar.activeFileBox?.fileRuntimeText = this.text
+            }
+        }
     }
+
 }

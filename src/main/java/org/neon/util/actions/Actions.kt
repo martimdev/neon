@@ -1,12 +1,10 @@
 package org.neon.util.actions
 
-import org.neon.api.controls.editor.FileButton
 import org.neon.api.controls.editor.NeonEditor
 import org.neon.api.controls.editor.OpenFilesBar
 import org.neon.api.controls.explorer.ExplorerBar
 import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.util.screen
-import java.io.File
 
 fun hideExplorer() {
     NeonExplorer.isVisible = false
@@ -24,17 +22,4 @@ fun showExplorer() {
     NeonEditor.layoutX = NeonExplorer.prefWidth + 1
     OpenFilesBar.prefWidth = screen.width + 1 - NeonExplorer.prefWidth
     OpenFilesBar.layoutX = NeonExplorer.prefWidth + 1
-}
-
-fun openFile(file: File) {
-    OpenFilesBar.addOpenFile(file)
-    NeonEditor.replaceText(file.readText())
-}
-
-fun closeFile(fileButton: FileButton) {
-    OpenFilesBar.items.remove(fileButton)
-    OpenFilesBar.openFiles -= fileButton.file.absolutePath
-    if (OpenFilesBar.activeFileButton == fileButton) {
-        NeonEditor.replaceText(String())
-    }
 }

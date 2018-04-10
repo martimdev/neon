@@ -44,6 +44,22 @@ public class Icons {
         }
     }
 
+    public static class Close extends ImageView {
+        public Close(double fitHeight, double fitWidth) {
+            this.setImage(new Image("icons/close-icon.png"));
+            this.setFitHeight(fitHeight);
+            this.setFitWidth(fitWidth);
+        }
+    }
+
+    public static class CloseLight extends ImageView {
+        public CloseLight(double fitHeight, double fitWidth) {
+            this.setImage(new Image("icons/close-light-icon.png"));
+            this.setFitHeight(fitHeight);
+            this.setFitWidth(fitWidth);
+        }
+    }
+
     public static class Python extends ImageView {
         public Python(double fitHeight, double fitWidth) {
             this.setImage(new Image("icons/python-icon.png"));

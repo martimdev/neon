@@ -78,12 +78,15 @@
     -fx-stroke: white;
 }
 
-.button {
+.file-box {
     -fx-background-color: #3C3F41;
     -fx-border-color: #8E8E91;
+}
+
+.file-box .label {
     -fx-text-fill: white;
 }
 
-.active-file-button {
-    -fx-background-color: #515658;
+.file-box .button {
+    -fx-text-fill: #687175;
 }
