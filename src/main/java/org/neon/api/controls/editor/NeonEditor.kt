@@ -13,5 +13,4 @@ object NeonEditor : InlineCssTextArea() {
         this.prefWidth = screen.width - NeonExplorer.prefWidth
         this.layoutX += NeonExplorer.prefWidth + 1
     }
-
 }
