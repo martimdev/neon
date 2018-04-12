@@ -4,6 +4,7 @@ import javafx.application.Platform
 import javafx.scene.control.Menu
 import javafx.scene.control.MenuItem
 import javafx.scene.control.SeparatorMenuItem
+import org.neon.util.Icons
 import org.neon.util.actions.saveAllFiles
 import org.neon.util.actions.saveCurrentFile
 import org.neon.util.config
@@ -24,12 +25,14 @@ object MenuFile : Menu("File") {
                 SeparatorMenuItem()
         )
 
-        menuItemSave.accelerator = config.keyMap["saveCurrentFile"]
+        menuItemSave.accelerator = config.keyMap!!["saveCurrentFile"]
+        menuItemSave.graphic = Icons.Save(12.0, 12.0)
         menuItemSave.setOnAction {
             saveCurrentFile()
         }
 
-        menuItemSaveAll.accelerator = config.keyMap["saveAllFiles"]
+        menuItemSaveAll.accelerator = config.keyMap!!["saveAllFiles"]
+        menuItemSaveAll.graphic = Icons.Save(12.0, 12.0)
         menuItemSaveAll.setOnAction {
             saveAllFiles()
         }

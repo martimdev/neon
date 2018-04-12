@@ -68,6 +68,14 @@ public class Icons {
         }
     }
 
+    public static class Save extends ImageView {
+        public Save(double fitHeight, double fitWidth) {
+            this.setImage(new Image("icons/save_icon.png"));
+            this.setFitHeight(fitHeight);
+            this.setFitWidth(fitWidth);
+        }
+    }
+
     public static class Python extends ImageView {
         public Python(double fitHeight, double fitWidth) {
             this.setImage(new Image("icons/python-icon.png"));

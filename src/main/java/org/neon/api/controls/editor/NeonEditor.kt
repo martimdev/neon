@@ -15,10 +15,13 @@ object NeonEditor : InlineCssTextArea() {
         this.layoutX += NeonExplorer.prefWidth + 1
 
         this.setOnKeyTyped {
-            if (OpenFilesBar.activeFileBox?.fileRuntimeText != NeonEditor.text) {
+            if (OpenFilesBar.activeFileBox?.file?.readText() != NeonEditor.text) {
                 OpenFilesBar.activeFileBox?.fileRuntimeText = this.text
                 OpenFilesBar.activeFileBox?.closeButton?.graphic = Icons.NotClose(8.0, 8.0)
                 OpenFilesBar.activeFileBox?.isSaved = false
+            } else {
+                OpenFilesBar.activeFileBox?.closeButton?.graphic = Icons.Close(8.0, 8.0)
+                OpenFilesBar.activeFileBox?.isSaved = true
             }
         }
     }

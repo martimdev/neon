@@ -62,7 +62,7 @@ object NeonExplorer : TreeView<NeonFile>() {
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle)
         this.prefHeight = screen.height - (51 + NeonStatusBar.prefHeight)
         this.layoutY += 50
-        this.prefWidth = config.explorerWidth
+        this.prefWidth = config.explorerWidth!!
         this.root = TreeItem(rootFolder, Icons.Folder(14.0, 14.0))
         this.listFiles(this.root, this.rootFolder)
         this.root.isExpanded = true
@@ -110,12 +110,12 @@ object NeonExplorer : TreeView<NeonFile>() {
 
     fun deleteFile(file: File) {
         val alert = Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to move this file to trash?")
-        val trashFolder = File(neonFolder.absolutePath + "/trash")
+        val trashFolder = File(neonDirectory.absolutePath + "/trash")
         if (!trashFolder.exists()) {
             trashFolder.mkdirs()
         }
         if (alert.showAndWait().get() == ButtonType.OK) {
-            file.renameTo(File("$neonFolder/trash/$file"))
+            file.renameTo(File("$neonDirectory/trash/$file"))
             this.selectionModel.selectedItem.parent.children.remove(this.selectionModel.selectedItem)
         }
     }

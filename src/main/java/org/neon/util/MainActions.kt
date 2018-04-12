@@ -11,8 +11,10 @@ import org.neon.api.controls.explorer.NeonExplorer
 import org.neon.api.controls.menubar.NeonMenuBar
 import org.neon.api.controls.statusbar.NeonStatusBar
 import java.io.File
+import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.io.PrintStream
+
 
 fun loadDeafultComponents() {
     root.children.add(NeonMenuBar)
@@ -30,24 +32,48 @@ fun loadStyles() {
 }
 
 fun createNeonFolder() {
-    if (!neonFolder.exists()) {
-        neonFolder.mkdir()
+    if (!neonDirectory.exists()) {
+        neonDirectory.mkdir()
     }
 }
 
-fun createUserConfig(config: ConfigData) {
-    val file = File(neonFolder.absolutePath + "/config/user_config.json")
+fun createUserConfig() {
+    val configDirectory = File(neonDirectory.absolutePath + "/config")
+    if (!configDirectory.exists()) {
+        configDirectory.mkdir()
+    }
+    val file = File(neonDirectory.absolutePath + "/config/user_config.json")
     file.createNewFile()
-    file.writeText(Gson().toJson(config))
+    if (file.readText() == String()) {
+        file.writeText("{}")
+    }
+}
+
+fun loadUserConfig(): ConfigData {
+    val reader = InputStreamReader(FileInputStream(File("$configDirectory/user_config.json")), "UTF-8")
+    return Gson().fromJson(reader, ConfigData::class.java)
 }
 
 fun loadDefaultConfig(): ConfigData {
+    createNeonFolder()
+    createUserConfig()
     val reader = InputStreamReader(Launcher::class.java.classLoader.getResourceAsStream("config/default_config.json"), "UTF-8")
     return Gson().fromJson(reader, ConfigData::class.java)
 }
 
+fun mergeConfigs(): ConfigData {
+    val defaultConfigJson = Gson().toJsonTree(defaultConfig).asJsonObject
+    val userConfigJson = Gson().toJsonTree(userConfig).asJsonObject
+    for ((key, value) in userConfigJson.entrySet()) {
+        if (value != null) {
+            defaultConfigJson.add(key, value)
+        }
+    }
+    return Gson().fromJson(defaultConfigJson, ConfigData::class.java)
+}
+
 fun enableConfigs() {
-    if (config.isConsoleEnabled) {
+    if (config.isConsoleEnabled!!) {
         System.setOut(PrintStream(NeonConsole))
     }
 }
