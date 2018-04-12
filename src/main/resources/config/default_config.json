@@ -1,5 +1,23 @@
 {
   "isConsoleEnabled": true,
+  "explorerWidth": 250.0,
   "styleFileName": "dark.css",
-  "explorerWidth": 250
+  "keyMap": {
+    "saveCurrentFile": {
+      "code": "S",
+      "shift": "UP",
+      "control": "DOWN",
+      "alt": "UP",
+      "meta": "UP",
+      "shortcut": "UP"
+    },
+    "saveAllFiles": {
+      "code": "S",
+      "shift": "DOWN",
+      "control": "DOWN",
+      "alt": "UP",
+      "meta": "UP",
+      "shortcut": "UP"
+    }
+  }
 }

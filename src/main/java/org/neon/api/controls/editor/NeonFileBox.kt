@@ -11,7 +11,7 @@ import java.io.File
 class NeonFileBox(val file: File) : ToolBar() {
 
     private val fileNameLabel = Label(file.name)
-    private val closeButton = Button(null, Icons.Close(8.0, 8.0))
+    val closeButton = Button(null, Icons.Close(8.0, 8.0))
     var fileRuntimeText = file.readText()
     var fileIcon =
             if (NeonExplorer.icons[file.extension] == null)
@@ -28,6 +28,7 @@ class NeonFileBox(val file: File) : ToolBar() {
                 this.style += "-fx-background-color: #3C3F41;"
             }
         }
+    var isSaved = true
 
     init {
         this.closeButton.prefHeight = 25.0
@@ -37,7 +38,6 @@ class NeonFileBox(val file: File) : ToolBar() {
                 this.fileNameLabel,
                 this.closeButton
         )
-
         this.setOnMouseClicked { event ->
             if (event.button == MouseButton.PRIMARY) {
                 OpenFilesBar.activeFileBox?.isSelected = false
@@ -58,7 +58,18 @@ class NeonFileBox(val file: File) : ToolBar() {
         }
 
         this.setOnMouseExited {
-            this.closeButton.graphic = Icons.Close(8.0, 8.0)
+            if (this.isSaved) {
+                this.closeButton.graphic = Icons.Close(8.0, 8.0)
+            } else {
+                this.closeButton.graphic = Icons.NotClose(8.0, 8.0)
+            }
+        }
+    }
+
+    fun save() {
+        if (file.exists() && file.isFile) {
+            file.writeText(this.fileRuntimeText)
+            this.isSaved = true
         }
     }
 

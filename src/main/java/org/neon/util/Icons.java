@@ -60,6 +60,14 @@ public class Icons {
         }
     }
 
+    public static class NotClose extends ImageView {
+        public NotClose(double fitHeight, double fitWidth) {
+            this.setImage(new Image("icons/not-save-icon.png"));
+            this.setFitHeight(fitHeight);
+            this.setFitWidth(fitWidth);
+        }
+    }
+
     public static class Python extends ImageView {
         public Python(double fitHeight, double fitWidth) {
             this.setImage(new Image("icons/python-icon.png"));
