@@ -15,7 +15,6 @@ import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.io.PrintStream
 
-
 fun loadDeafultComponents() {
     root.children.add(NeonMenuBar)
     root.children.add(NeonExplorer)

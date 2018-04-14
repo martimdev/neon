@@ -6,8 +6,8 @@ import javafx.scene.image.ImageView
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
 import javafx.scene.text.Text
-import org.neon.api.contexts.FileContextMenu
-import org.neon.api.contexts.FolderContextMenu
+import org.neon.api.controls.contexts.FileContextMenu
+import org.neon.api.controls.contexts.FolderContextMenu
 import org.neon.api.controls.editor.NeonEditor
 import org.neon.api.controls.editor.OpenFilesBar
 import org.neon.api.controls.statusbar.NeonStatusBar

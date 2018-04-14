@@ -9,6 +9,7 @@ import java.io.File
 
 val neonDirectory = File(".neon")
 val configDirectory = File("$neonDirectory/config")
+val pluginsDirectory = File("$neonDirectory/plugins")
 
 val defaultConfig = loadDefaultConfig()
 val userConfig: ConfigData? = loadUserConfig()

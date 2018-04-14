@@ -9,6 +9,7 @@ import org.neon.util.actions.saveAllFiles
 import org.neon.util.actions.saveCurrentFile
 import org.neon.util.config
 
+
 object MenuFile : Menu("File") {
 
     private val menuItemSave = MenuItem("Save")
