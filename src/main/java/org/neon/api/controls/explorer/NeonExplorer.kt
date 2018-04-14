@@ -35,7 +35,6 @@ object NeonExplorer : TreeView<NeonFile>() {
         }
     }
 
-    private var rootFolder = NeonFile("C:\\Users\\Vitor Marques\\dev\\JavaScript\\flappy-bird")
     val icons: HashMap<String, ImageView> = hashMapOf(
             "py" to Icons.Python(14.0, 14.0),
             "js" to Icons.JavaScript(14.0, 14.0)
@@ -63,8 +62,8 @@ object NeonExplorer : TreeView<NeonFile>() {
         this.prefHeight = screen.height - (51 + NeonStatusBar.prefHeight)
         this.layoutY += 50
         this.prefWidth = config.explorerWidth!!
-        this.root = TreeItem(rootFolder, Icons.Folder(14.0, 14.0))
-        this.listFiles(this.root, this.rootFolder)
+        this.root = TreeItem(projectDirectory, Icons.Folder(14.0, 14.0))
+        this.listFiles(this.root, projectDirectory)
         this.root.isExpanded = true
 
         this.setOnMouseMoved { event ->

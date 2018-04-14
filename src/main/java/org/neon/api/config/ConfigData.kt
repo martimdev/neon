@@ -7,6 +7,6 @@ data class ConfigData(
         val isConsoleEnabled: Boolean?,
         val explorerWidth: Double?,
         val styleFileName: String?,
-        val rootFolder: File?,
-        var keyMap: Map<String, KeyCodeCombination>?
+        val projectDirectory: File?,
+        val keyMap: Map<String, KeyCodeCombination>?
 )
