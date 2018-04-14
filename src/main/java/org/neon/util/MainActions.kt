@@ -48,6 +48,12 @@ fun createUserConfig() {
     }
 }
 
+fun createPluginsDirectory() {
+    if (!pluginsDirectory.exists()) {
+        pluginsDirectory.mkdir()
+    }
+}
+
 fun loadUserConfig(): ConfigData {
     val reader = InputStreamReader(FileInputStream(File("$configDirectory/user_config.json")), "UTF-8")
     return Gson().fromJson(reader, ConfigData::class.java)
@@ -56,6 +62,7 @@ fun loadUserConfig(): ConfigData {
 fun loadDefaultConfig(): ConfigData {
     createNeonFolder()
     createUserConfig()
+    createPluginsDirectory()
     val reader = InputStreamReader(Launcher::class.java.classLoader.getResourceAsStream("config/default_config.json"), "UTF-8")
     return Gson().fromJson(reader, ConfigData::class.java)
 }
